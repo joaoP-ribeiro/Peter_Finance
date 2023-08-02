@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native"
 const styles = StyleSheet.create({
         container: {
           flex:1, 
-          backgroundColor: "#1E1E1E"
+          backgroundColor: "#000"
         
         },
     
@@ -11,22 +11,38 @@ const styles = StyleSheet.create({
             height: 300,
             borderRadius: 8,
         },
-    
+
         container2:{
-            height: 80,
+            height: "15%",
             justifyContent: "center",
             alignItems:"center"
+            
+        },
+    
+        container3:{
+            height: "100%",
+            width: "100%",
+            justifyContent: "center",
+            alignItems:"center",
+            backgroundColor: "#323232"
+        },
+
+        text:{
+            fontSize:20,
+            color: "#0CBECE",
+            fontWeight: "bold",
+            margin: 10,
         },
 
         container_input:{
             flexDirection: "row",
             height: 40,
-            width: 370,
-            borderRadius: 8,
-            backgroundColor: "#168624",
+            width: "90%",
+            borderRadius: 4,
+            backgroundColor: "#FBFBFB",
         },
         input: {
-            color: "#d9d9d9",
+            color: "#1B2311",
             borderWidth: 0,
             borderColor: 'transparent',
             padding: "3%",
@@ -39,21 +55,16 @@ const styles = StyleSheet.create({
         },
     
         botao:{
-            color: "#c7c7c7",
-            margin: 2,
+            color: "#1B2311",
             height: "100%",
             fontSize: 16,
-            width: "10%",
-            backgroundColor: "transparent",
+            width: "12%",
+            backgroundColor: "#0CBECE",
             borderWidth: 0,
             borderColor: 'transparent',
+            borderRadius: 4,
         },
 
-        linha:{
-            width: "100%",
-            height: 1,
-            backgroundColor: "#d9d9d9"
-        },
 
         container_acoes:{
             width: "100%",

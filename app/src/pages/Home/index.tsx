@@ -1,13 +1,22 @@
-import React, {useState, useEffect } from "react"
-import {View, TextInput, Image, ScrollView,} from "react-native"
+import {useState, useEffect } from "react"
+import {View, TextInput, Image, ScrollView, Text } from "react-native"
 import { ImSearch } from 'react-icons/im';
+import { LinearGradient } from 'expo-linear-gradient';
 import Carta from "../../components/carta/index"
 
 import styles from "./style"
 
+interface Acao {
+    stock: string,
+    name: string,
+    close: number,
+    change: number,
+    logo: string
+}
 
 export default function Home(){
     const [pesquisa, set_pesquisa] = useState("")
+    const[acoes_encontradas, set_acoes_encontradas]= useState([])
 
     const pesquisar_acao = (pesquisa_user: string) =>{
         set_pesquisa(pesquisa_user)
@@ -17,12 +26,12 @@ export default function Home(){
     const procurar_acoes = async(url:string) =>{
         const resposta = await fetch(url);
         const dados = await resposta.json();
-        console.log(dados.stocks.length)
-        console.log(dados.stocks)
+        set_acoes_encontradas(dados.stocks)
+        
     }
 
     useEffect(() => {
-        const url_pesquisa_acao = `https://brapi.dev/api/quote/list?sortBy=close&sortOrder=desc&limit=20&search=${pesquisa}`
+        const url_pesquisa_acao = `https://brapi.dev/api/quote/list?sortBy=close&sortOrder=desc&limit=10&search=${pesquisa}`
 
         procurar_acoes(url_pesquisa_acao)
     }, [pesquisa])
@@ -30,25 +39,24 @@ export default function Home(){
 
     return(
     <View style={styles.container}>
-        <Image
-            source={require("../../../assets/logo.png")}
-            style={styles.image}
-        />
         <View style={styles.container2}>
-            <View style={styles.container_input}>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Pesquise sua ação!"
-                    onChangeText={pesquisar_acao}
-                    value={pesquisa}
-                    maxLength={20}
-                />
+            <View style={styles.container3}>
+                <Text style={styles.text}>PETER FINANCE</Text>
+                <View style={styles.container_input}>
                 <button style={styles.botao}><ImSearch/></button>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Pesquise sua ação!"
+                        onChangeText={pesquisar_acao}
+                        value={pesquisa}
+                        maxLength={20}
+                    />
+                   
+                </View>
             </View>
         </View>
-        <View style={styles.linha}/>
         <ScrollView style={styles.container_acoes}>
-            <Carta
+        {acoes_encontradas.length > 0 && acoes_encontradas.map((stocks) => <Carta acao={stocks}/>)}
         </ScrollView>
     </View>
     )

@@ -3,25 +3,45 @@ import { ImSearch } from 'react-icons/im';
 
 import styles from "./style"
 
-export default function Carta(stock: string, name: string, logo: string, close: number, change: number ){
+type Acao = {
+    stock: string,
+    close: number,
+    change: number,
+    logo: string
+}
+
+export default function Carta({ acao }: { acao: Acao }) {
     return(
-        <View>
-            <View>
-                <View>
+
+        <View style={styles.container}>
+            <View style={styles.container_div}>
+                <View style={styles.container_img}>
                     <Image
-                        source={require(logo)}
-                        style={{ width: 200, height: 200 }}
+                        source={{uri: acao.logo}}
+                        style={styles.imagem}
                     />
                 </View>
-                <View>
-                    <Text></Text>
+                <View style={styles.container_text}>
+                    <View style={styles.sockt}>
+                        <Text style={styles.text}>{acao.stock}</Text>
+                    </View>
+                    <View>
+                        <View>
+
+                        </View>
+                        <View>
+                        
+                        </View>
+                    </View>
+                    
                 </View>
             </View>
-            <Text></Text>
             <View>
-                <View></View>
-                <View></View>
+                 
             </View>
+            
         </View>
+
+        
     )
 }
