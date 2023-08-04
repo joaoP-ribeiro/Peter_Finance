@@ -5,13 +5,7 @@ import Carta from "../../components/carta/index"
 
 import styles from "./style"
 
-interface Acao {
-    stock: string,
-    name: string,
-    close: number,
-    change: number,
-    logo: string
-}
+
 
 export default function Home(){
     const [pesquisa, set_pesquisa] = useState("")

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         },
 
         container2:{
-            height: "15%",
+            height: "20%",
             justifyContent: "center",
             alignItems:"center"
             
@@ -21,10 +21,13 @@ const styles = StyleSheet.create({
     
         container3:{
             height: "100%",
-            width: "100%",
+            width: "98%",
             justifyContent: "center",
             alignItems:"center",
-            backgroundColor: "#323232"
+            backgroundColor: "#323232",
+
+            borderBottomRightRadius: 8,
+            borderBottomLeftRadius: 8,
         },
 
         text:{
