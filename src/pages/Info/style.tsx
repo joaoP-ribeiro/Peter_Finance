@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native"
 
-const styles = StyleSheet.create({   
+const styles = StyleSheet.create({
     container: {
         flex:1, 
         backgroundColor: "#000"
@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
       },
   
       imagem:{
-          height: 300,
+          height: "100%",
+          width: "100%",
           borderRadius: 8,
       },
 
@@ -37,7 +38,78 @@ const styles = StyleSheet.create({
           margin: 10,
       },
 
-      container_inf_nome:{},
+      container_p:{
+        marginTop: 10,
+        margin: 10,
+        flex: 1
+      },
+
+      container4:{
+        alignItems: "center",
+        height: "15%"
+      },
+
+
+      container_nomes:{
+        width: "100%",
+        height: "100%",
+        flexDirection: "row",
+      },
+
+      container_nomes_img:{
+        width: "27%",
+      },
+
+      container_nomes_inf:{
+        width: "73%",
+        flex: 1,
+        flexDirection: "column",
+        marginLeft: 8,
+      },
+
+      container_nomes_symbol:{
+        width: "100%",
+        height: "60%",
+        justifyContent: "center",
+        
+      },
+
+      symbol:{
+        fontSize: 50,
+        fontFamily: "arial",
+        color: "#d9d9d9",
+        fontWeight: "bold"
+      },
+
+      container_nomes_shortName:{
+        width: "100%",
+        height: "40%",
+        justifyContent: "center",
+        textAlign: "justify"
+      },
+
+      shortName:{
+        fontSize: 13,
+        fontFamily: "arial",
+        color: "#d9d9d9",
+        fontWeight: "bold"
+      },
+
+      container5:{
+        width: "100%",
+        marginTop: 15,
+        alignItems: "center",
+      },
+
+      cor:{
+        width: "100%",
+        height: 2, 
+        backgroundColor: "#0CBECE",
+        borderRadius: 9999,
+      },
+
+      
+      
 
 
    })
