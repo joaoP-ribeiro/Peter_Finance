@@ -2,7 +2,8 @@ import {View, TextInput,Text, Image, ScrollView, TouchableOpacity} from "react-n
 import { BiSolidUpArrow } from 'react-icons/bi';
 import { BiSolidDownArrow } from 'react-icons/bi';
 import {useState, useEffect } from "react"
-import { useNavigation } from '@react-navigation/native';
+import Modal from 'react-native-modal';
+import Info from "../../pages/Info/index"
 
 import styles from "./style"
 
@@ -14,27 +15,14 @@ type Acao = {
     logo: string
 }
 
-type Inf_acao = {
-    logourl: string
-}
 
 
 export default function Carta({ acao }: { acao: Acao }) {
-    const navigation = useNavigation();
-    const[acao_encontrada, set_acao_encontrada]= useState<Inf_acao | null>(null);
+    const [isModalVisible, setModalVisible] = useState(false);
 
-    const procurar_acao = async(url:string) =>{
-        const resposta = await fetch(url);
-        const dados = await resposta.json();
-        set_acao_encontrada(dados.results[0])
-        console.log(dados.results[0])
-    }
-
-    useEffect(() => {
-        const url_pesquisa_acao = `https://brapi.dev/api/quote/${acao.stock}?range=1d&interval=1d&fundamental=true&dividends=true'`
-        procurar_acao(url_pesquisa_acao)
-    }, [])
-
+    const mostrar_modal = () => {
+        setModalVisible(!isModalVisible);
+    };
     function estilo(valor: number) {
         if (valor < 0) {
           return styles.vermelho;
@@ -44,9 +32,9 @@ export default function Carta({ acao }: { acao: Acao }) {
       }
 
     return(
-
+        <View>
         <TouchableOpacity
-            onPress={() => navigation.navigate("Info", {inf_acao : acao_encontrada})}
+            onPress={mostrar_modal}
         >
             <View style={styles.container}>
                 <View style={styles.container_div}>
@@ -71,7 +59,7 @@ export default function Carta({ acao }: { acao: Acao }) {
                             </View>
                             <View style={styles.precos}>
                                 <Text style={estilo(acao.change)}>{ acao.change < 0 ? <BiSolidDownArrow/>:<BiSolidUpArrow/>}</Text>
-                                <Text style={estilo(acao.change)}>{ acao.change.toFixed(2)}</Text>
+                                <Text style={estilo(acao.change)}>{ acao.change.toFixed(2)} %</Text>
                             </View>
                         </View>
                         
@@ -83,6 +71,10 @@ export default function Carta({ acao }: { acao: Acao }) {
                 
             </View>
         </TouchableOpacity>
+            <Modal isVisible={isModalVisible} style={styles.modal}>
+                <Info nome_acao={acao.stock} valor_acao={acao.close}/>
+            </Modal>
+        </View>
 
         
     )

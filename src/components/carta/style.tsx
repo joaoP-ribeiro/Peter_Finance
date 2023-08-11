@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native"
 
 const styles = StyleSheet.create({
-
     container:{
         backgroundColor: "#32323298",
         borderRadius: 8,
@@ -10,8 +9,8 @@ const styles = StyleSheet.create({
     },
 
     imagem:{
-        height: "60%",
-        width: "60%",
+        height: 45,
+        width: 45,
         borderRadius: 9999,
     },
 
@@ -91,7 +90,12 @@ const styles = StyleSheet.create({
 
         textAlign: "center",
         justifyContent: "center"
-    }
+    },
+
+    modal:{
+        margin: 0,
+        padding: 0,
+    },
 
 
 })

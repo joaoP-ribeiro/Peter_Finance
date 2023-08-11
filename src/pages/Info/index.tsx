@@ -1,63 +1,95 @@
-import {View, TextInput, Image, ScrollView, Text, Button } from "react-native"
-import { useNavigation } from '@react-navigation/native';
+import {View, TextInput, Image, ScrollView, Text, Button,  } from "react-native"
+import {useState, useEffect } from "react"
+import { BsDashLg } from 'react-icons/bs';
 import styles from "./style"
 
-type Inf_acao = {
-    logourl: string, 
-    symbol: string,
-    longName: string
+interface info_props{
+  nome_acao: string;
+  valor_acao: number;
 }
 
-type InfoProps = {
-    route: {
-      params: {
-        inf_acao: Inf_acao;
-      };
-    };
-  };
+interface Acao {
+  regularMarketChange: number,
+  regularMarketChangePercent: number,
+  logourl: string;
+  longName: string
+}
 
-//
+const Info: React.FC<info_props> = ({ nome_acao, valor_acao }) => {
+    const[acao_encontrada, set_acao_encontrada]= useState<Acao | null>(null);
 
-const Info: React.FC<InfoProps> = ({ route }) => {
-    const { navigate } = useNavigation();
-    const { inf_acao } = route.params;
+    const procurar_acao = async(url:string) =>{
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
+        set_acao_encontrada(dados.results[0])
+        console.log(dados.results[0])
+    }
+
+    useEffect(() => {
+        const url_pesquisa_acao = `https://brapi.dev/api/quote/${(nome_acao)}?range=1d&interval=1d&fundamental=true&dividends=true'`
+        procurar_acao(url_pesquisa_acao)
+    }, [])
+
+    function estilo(valor: number) {
+      if (valor < 0) {
+        return styles.vermelho;
+      } else {
+        return styles.verde;
+      }
+    }
+
 
     return(
-    <View style={styles.container}>
-      <View style={styles.container2}>
-        <View style={styles.container3}>
-          <Text style={styles.text}>PETER FINANCE</Text>
+    <View style={styles.container_back}>
+       <View style={styles.container}>
+        <View style={styles.container_traco}>
+            <Text style={styles.traco}><BsDashLg/></Text>
         </View>
-      </View>
-
-
-      <View style={styles.container_p}>
-        <View style={styles.container4}>
-          <View style={styles.container_nomes}>
-            <View style={styles.container_nomes_img}>
-              <Image
-                    source={{uri: inf_acao.logourl}}
-                    style={styles.imagem}
-              />
-            </View>
-            <View style={styles.container_nomes_inf}>
-              <View style={styles.container_nomes_symbol}>
-                  <Text style={styles.symbol}>{inf_acao.symbol}</Text>
-              </View>
-              <View style={styles.container_nomes_shortName}>
-                  <Text style={styles.shortName}>{inf_acao.longName}</Text>
-              </View>
+        <View style={styles.container_valor_mm}>
+          <View style={styles.container_valor_lp}>
+            <View style={styles.back}>
+            {acao_encontrada && acao_encontrada.regularMarketChange ? (
+                    <Text style={estilo(acao_encontrada.regularMarketChangePercent)}>
+                      R$: {acao_encontrada.regularMarketChange.toFixed(2)}
+                    </Text>
+                ) : (
+                    <Text style={styles.verde}> R$: 0.00</Text>
+                )}
             </View>
           </View>
         </View>
-        <View style={styles.container5}>   
-          <View style={styles.cor}></View>
-        </View>
-      </View>
-        
+          <View style={styles.container_inf}>
+              <View style={styles.container_img}>
+                {acao_encontrada && acao_encontrada.logourl ? (
+                    <Image
+                      source={{ uri: acao_encontrada.logourl }}
+                      style={styles.imagem}
+                    />
+                ) : (
+                    <Text></Text>
+                )}
+              </View>
+              <View style={styles.container_nome}>
+                  {acao_encontrada && acao_encontrada.longName ? (
+                    <Text style={styles.text}>
+                      {acao_encontrada.longName}
+                    </Text>
+                  ) : (
+                    <Text></Text>
+                  )}
+              </View>
+              <View style={styles.container_valor}>
+                <Text style={styles.text_val}>R$: {valor_acao.toFixed(2)}</Text>
+              </View>
+          </View>
+          <View style={styles.container_linha}>
+            <View style={styles.linha}>
+
+            </View>
+          </View>
+       </View>
     </View>
     )
 }
-
 
 export default Info
