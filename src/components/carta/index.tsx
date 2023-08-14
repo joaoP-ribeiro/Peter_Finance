@@ -3,7 +3,7 @@ import { BiSolidUpArrow } from 'react-icons/bi';
 import { BiSolidDownArrow } from 'react-icons/bi';
 import {useState, useEffect } from "react"
 import Modal from 'react-native-modal';
-import Info from "../../pages/Info/index"
+import Info from "../Info/index"
 
 import styles from "./style"
 
@@ -59,7 +59,6 @@ export default function Carta({ acao }: { acao: Acao }) {
                             </View>
                             <View style={styles.precos}>
                                 <Text style={estilo(acao.change)}>{ acao.change < 0 ? <BiSolidDownArrow/>:<BiSolidUpArrow/>}</Text>
-                                <Text style={estilo(acao.change)}>{ acao.change.toFixed(2)} %</Text>
                             </View>
                         </View>
                         
