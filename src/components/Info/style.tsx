@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: "100%",
-    height: "75%",
+    height: "85%",
     backgroundColor: "#000"
   },
 
@@ -128,12 +128,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF"
   },
 
-  container_tabela:{
-    justifyContent: "center",
-    alignItems: "center",
-    height: "65%",
-    width: "100%",
-  },
+  
 
 
   })

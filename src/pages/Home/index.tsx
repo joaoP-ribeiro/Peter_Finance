@@ -1,7 +1,7 @@
 import {useState, useEffect } from "react"
 import {View, TextInput, Image, ScrollView, Text } from "react-native"
 import { ImSearch } from 'react-icons/im';
-import Carta from "../../components/carta/index"
+import Carta from "../../components/Carta/index"
 
 import styles from "./style"
 
