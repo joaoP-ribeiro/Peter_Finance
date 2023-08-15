@@ -1,10 +1,8 @@
 import {View, TextInput, Image, ScrollView, Text, Button,  } from "react-native"
 import {useState, useEffect } from "react"
-import { BsDashLg } from 'react-icons/bs';
 import styles from "./style"
-import Hoje from "../Hoje/index"
 import Nav from "../Nav";
-import Historico from "../Historico";
+
 
 interface info_props{
   nome_acao: string;
@@ -45,11 +43,8 @@ const Info: React.FC<info_props> = ({ nome_acao, valor_acao }) => {
 
 
     return(
-    <View style={styles.container_back}>
+    <View style={styles.container_p}>
        <View style={styles.container}>
-        <View style={styles.container_traco}>
-            <Text style={styles.traco}><BsDashLg/></Text>
-        </View>
         <View style={styles.container_valor_mm}>
           <View style={styles.container_valor_lp}>
             <View style={styles.back}>
@@ -79,12 +74,8 @@ const Info: React.FC<info_props> = ({ nome_acao, valor_acao }) => {
                 <Text style={styles.text_val}>R$: {valor_acao.toFixed(2)}</Text>
               </View>
           </View>
-          <View style={styles.container_linha}>
-            <View style={styles.linha}></View>
-          </View>
-          <Nav/>
-          {/*<Hoje nome_acao={nome_acao}/>*/}
-          <Historico nome_acao={nome_acao}/>
+
+          <Nav nome_acao={nome_acao}/>
        </View>
     </View>
     )

@@ -1,16 +1,32 @@
 import { StyleSheet } from "react-native"
 
 const styles = StyleSheet.create({
+    container_p:{
+        width: "100%",
+        flex: 1,
+    },
+
+    container_linha:{
+        marginTop: "2%",
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: "2%"
+      },
+    
+      linha:{
+        height: 2,
+        width: "90%",
+        backgroundColor: "#0CBECE80"
+    },
     container_nav:{
         marginTop: 3,
-        width: "100%",
         height: "4%",
         flexDirection: "row",
     },
 
     container_bt:{
         height: "100%",
-        width: "33%",
+        width: "25%",
         justifyContent: "center",
         alignItems: "center"
     },
@@ -41,6 +57,10 @@ const styles = StyleSheet.create({
     bt_select:{
         fontSize: 15,
         color: "#000",
+    },
+
+    container_inf:{
+        marginTop: "3%"
     },
     
 })

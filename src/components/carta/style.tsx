@@ -97,6 +97,32 @@ const styles = StyleSheet.create({
         padding: 0,
     },
 
+    container_back: {
+        position: 'absolute',
+        bottom: 0,
+        width: "100%",
+        height: "85%",
+        backgroundColor: "#000"
+      },
+
+    container_top: {
+        backgroundColor: "#32323275",
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10
+      },
+
+    container_traco:{
+        width: "100%",
+        heigt: "5%",
+        justifyContent: "center",
+        alignItems: "center"
+      },
+    
+      traco:{
+        fontSize: 20,
+        color: "#0CBECE"
+      },
+
 
 })
 export default styles

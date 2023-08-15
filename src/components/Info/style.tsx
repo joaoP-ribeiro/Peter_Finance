@@ -1,31 +1,14 @@
 import { StyleSheet } from "react-native"
 
 const styles = StyleSheet.create({
-  container_back: {
-    position: 'absolute',
-    bottom: 0,
-    width: "100%",
-    height: "85%",
-    backgroundColor: "#000"
+  container_p:{
+    flex: 1,
+    backgroundColor: "#000",
   },
 
   container: {
     flex: 1,
     backgroundColor: "#32323275",
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10
-  },
-
-  container_traco:{
-    width: "100%",
-    heigt: "5%",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-
-  traco:{
-    fontSize: 30,
-    color: "#0CBECE"
   },
 
   container_valor_mm:{
@@ -99,17 +82,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
 
-  container_linha:{
-    marginTop: "3%",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-
-  linha:{
-    height: 2,
-    width: "90%",
-    backgroundColor: "#0CBECE80"
-  },
 
   container_nome:{
     width: "50%",

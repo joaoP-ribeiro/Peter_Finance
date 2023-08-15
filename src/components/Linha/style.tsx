@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     inf_valor:{
         height: "100%",
         width: "50%",
-        justifyContent: "center"
+        justifyContent: "center",
+        textAlign: "justify"
     },
 
 

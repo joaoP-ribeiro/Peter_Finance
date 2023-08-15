@@ -1,5 +1,6 @@
 import {View, TextInput, Image, ScrollView, Text, Button,  } from "react-native"
 import {useState, useEffect } from "react"
+import { MdToday } from 'react-icons/md';
 import styles from "./style"
 import Linha from "../Linha/index"
 
@@ -23,6 +24,7 @@ const Hoje: React.FC<tabela_props> = ({nome_acao}) =>{
         const resposta = await fetch(url);
         const dados = await resposta.json();
         set_valores_acao(dados.results[0].historicalDataPrice[0])
+        console.log()
     }
 
     useEffect(() => {
@@ -41,6 +43,7 @@ const Hoje: React.FC<tabela_props> = ({nome_acao}) =>{
                 <Linha titulo="Ajuste:" sifra="R$: " valor={valores_acao?.adjustedClose.toFixed(2)}/>
                 <Linha titulo="Compras:" sifra="" valor={valores_acao?.volume}/>
             </View>
+            <View style={styles.logo}><MdToday/></View>
         </View>
     )
 

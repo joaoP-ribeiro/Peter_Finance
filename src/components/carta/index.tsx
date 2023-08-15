@@ -1,8 +1,8 @@
 import {View, TextInput,Text, Image, ScrollView, TouchableOpacity} from "react-native"
-import { BiSolidUpArrow } from 'react-icons/bi';
-import { BiSolidDownArrow } from 'react-icons/bi';
+import { BiSolidUpArrow } from 'react-icons/bi'
+import { BiSolidDownArrow } from 'react-icons/bi'
 import {useState, useEffect } from "react"
-import Modal from 'react-native-modal';
+import Modal from 'react-native-modal'
 import Info from "../Info/index"
 
 import styles from "./style"
@@ -71,7 +71,18 @@ export default function Carta({ acao }: { acao: Acao }) {
             </View>
         </TouchableOpacity>
             <Modal isVisible={isModalVisible} style={styles.modal}>
-                <Info nome_acao={acao.stock} valor_acao={acao.close}/>
+                <View style={styles.container_back}>
+                    <View style={styles.container_top}>
+                        <View style={styles.container_traco}>
+                            <TouchableOpacity 
+                                onPress={mostrar_modal}
+                            >
+                                <Text style={styles.traco}><BiSolidDownArrow/></Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <Info nome_acao={acao.stock} valor_acao={acao.close}/>
+                </View>
             </Modal>
         </View>
 
